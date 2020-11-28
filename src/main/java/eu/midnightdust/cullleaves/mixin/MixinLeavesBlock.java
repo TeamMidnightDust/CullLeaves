@@ -1,4 +1,4 @@
-package eu.midnightdust.fastleaves.mixin;
+package eu.midnightdust.cullleaves.mixin;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
