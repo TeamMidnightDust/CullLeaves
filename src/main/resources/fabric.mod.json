@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "fastleaves",
+  "version": "${version}",
+
+  "name": "Fast Leaves",
+  "description": "Adds culling to leaf blocks, providing a huge performance boost over vanilla.",
+  "authors": [
+    "Motschen",
+    "TeamMidnightDust"
+  ],
+  "contact": {
+    "homepage": "https://www.midnightdust.eu/",
+    "sources": "https://github.com/TeamMidnightDust/FastLeaves",
+    "issues": "https://github.com/TeamMidnightDust/FastLeaves/issues"
+  },
+
+  "license": "MIT",
+  "icon": "assets/fastleaves/icon.png",
+
+  "environment": "client",
+
+  "mixins": [
+    "fastleaves.mixins.json"
+  ]
+}

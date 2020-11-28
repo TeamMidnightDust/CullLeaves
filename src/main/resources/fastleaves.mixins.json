@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "eu.midnightdust.fastleaves.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "MixinLeavesBlock"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
