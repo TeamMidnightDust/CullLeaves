@@ -19,6 +19,19 @@
   "icon": "assets/cullleaves/icon.png",
 
   "environment": "client",
+  "entrypoints": {
+    "client": [
+      "eu.midnightdust.cullleaves.CullLeavesClient"
+    ],
+    "modmenu": [
+      "eu.midnightdust.cullleaves.config.ModMenuIntegration"
+    ]
+  },
+
+  "depends": {
+    "fabric-resource-loader-v0": "*",
+    "minecraft": ">=1.16"
+  },
 
   "mixins": [
     "cullleaves.mixins.json"

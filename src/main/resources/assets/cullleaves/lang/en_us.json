@@ -1,0 +1,5 @@
+{
+	"text.autoconfig.cullleaves.title":"Cull Leaves Config",
+	"text.autoconfig.cullleaves.option.enabled.@PrefixText":"After changing this setting you have to reload all chunks (F3 + A)",
+	"text.autoconfig.cullleaves.option.enabled":"Enabled"
+}
