@@ -1,6 +1,6 @@
 package eu.midnightdust.cullleaves.mixin;
 
-import eu.midnightdust.cullleaves.CullLeavesClient;
+import eu.midnightdust.cullleaves.config.CullLeavesConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
@@ -20,7 +20,7 @@ public class MixinLeavesBlock extends Block {
     @Override
     @SuppressWarnings("deprecation")
     public boolean isSideInvisible(BlockState state, BlockState neighborState, Direction offset) {
-        if (CullLeavesClient.CL_CONFIG.enabled) {
+        if (CullLeavesConfig.enabled) {
             return neighborState.getBlock() instanceof LeavesBlock;
         }
         else return false;
