@@ -10,6 +10,6 @@ public class ModMenuIntegration implements ModMenuApi {
 
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return parent -> new CullLeavesConfig().getScreen(parent);
+        return parent -> CullLeavesConfig.getScreen(parent, "cullleaves");
     }
 }

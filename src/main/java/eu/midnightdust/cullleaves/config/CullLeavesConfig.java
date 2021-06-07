@@ -1,7 +1,8 @@
 package eu.midnightdust.cullleaves.config;
 
-public class CullLeavesConfig extends MidnightConfig {
+import eu.midnightdust.lib.config.MidnightConfig;
 
+public class CullLeavesConfig extends MidnightConfig {
     @Entry //  Enable/Disable the mod. Requires Chunk Reload (F3 + A).
     public static boolean enabled = true;
 }
