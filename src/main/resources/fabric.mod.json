@@ -22,9 +22,6 @@
   "entrypoints": {
     "client": [
       "eu.midnightdust.cullleaves.CullLeavesClient"
-    ],
-    "modmenu": [
-      "eu.midnightdust.cullleaves.config.ModMenuIntegration"
     ]
   },
 
