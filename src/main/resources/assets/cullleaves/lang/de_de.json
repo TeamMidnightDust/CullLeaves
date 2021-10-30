@@ -1,0 +1,5 @@
+{
+	"cullleaves.midnightconfig.title":"Cull Leaves Konfiguration",
+	"cullleaves.midnightconfig.enabled.tooltip":"Lade alle Chunks nach dem Ändern dieser Einstellung neu (F3 + A)!",
+	"cullleaves.midnightconfig.enabled":"Aktiviert"
+}
