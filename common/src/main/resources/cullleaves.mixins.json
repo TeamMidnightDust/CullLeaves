@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "eu.midnightdust.cullleaves.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "MixinLeavesBlock"
+  ],
+  "mixins": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,35 @@
+modLoader = "javafml"
+loaderVersion = "[43,)"
+#issueTrackerURL = ""
+license = "MIT"
+
+[[mods]]
+modId = "cullleaves"
+version = "${version}"
+displayName = "CullLeaves"
+authors = "Motschen, TeamMidnightDust"
+description = '''
+Adds culling to leaf blocks, providing a huge performance boost over vanilla.
+'''
+logoFile = "icon.png"
+
+[[dependencies.cullleaves]]
+modId = "forge"
+mandatory = true
+versionRange = "[43,)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.cullleaves]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.19.2,)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.cullleaves]]
+modId = "midnightlib"
+mandatory = true
+versionRange = "[1.0.0,)"
+ordering = "NONE"
+side = "CLIENT"
