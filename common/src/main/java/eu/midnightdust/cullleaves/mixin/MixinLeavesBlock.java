@@ -9,9 +9,9 @@ import net.minecraft.block.LeavesBlock;
 import net.minecraft.util.math.Direction;
 import org.spongepowered.asm.mixin.Mixin;
 
-@Mixin(LeavesBlock.class)
+@Mixin(value = LeavesBlock.class, priority = 1900)
 @Environment(EnvType.CLIENT)
-public class MixinLeavesBlock extends Block {
+public abstract class MixinLeavesBlock extends Block {
 
     public MixinLeavesBlock(Settings settings) {
         super(settings);
