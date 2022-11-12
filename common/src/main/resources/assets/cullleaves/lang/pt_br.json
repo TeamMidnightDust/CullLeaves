@@ -1,5 +1,5 @@
 {
 	"cullleaves.midnightconfig.title":"Definições do Cull Leaves",
 	"cullleaves.midnightconfig.enabled.tooltip":"Recarregue os chunks (F3 + A) ao alterar essa opção",
-	"cullleaves.midnightconfig.enabled":"Ativado"
+	"cullleaves.midnightconfig.enabled":"Ativado Cull Leaves"
 }

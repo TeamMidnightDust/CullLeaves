@@ -18,7 +18,7 @@
     "license": "MIT",
     "icon": "assets/cullleaves/icon.png",
     "intermediate_mappings": "net.fabricmc:intermediary",
-    "environment": "*",
+    "environment": "client",
     "entrypoints": {
       "client_init": [
         "eu.midnightdust.cullleaves.quilt.CullLeavesClientQuilt"
@@ -40,6 +40,7 @@
     ],
     "metadata": {
       "name": "Cull Leaves (Quilt)",
+      "description": "Adds culling to leaf blocks, providing a huge performance boost over vanilla.",
       "contributors": {
         "Motschen": "Author",
         "TeamMidnightDust": "Mascot"

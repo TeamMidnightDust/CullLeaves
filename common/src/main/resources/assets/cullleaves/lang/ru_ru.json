@@ -1,5 +1,5 @@
 {
 	"cullleaves.midnightconfig.title":"Настройки Cull Leaves",
 	"cullleaves.midnightconfig.enabled.tooltip":"После изменения этого параметра необходимо перезагрузить чанки (F3 + A)",
-	"cullleaves.midnightconfig.enabled":"Включён"
+	"cullleaves.midnightconfig.enabled":"Включён Cull Leaves"
 }

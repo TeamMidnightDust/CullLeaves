@@ -1,7 +1,7 @@
 modLoader = "javafml"
 loaderVersion = "[43,)"
 #issueTrackerURL = ""
-license = "MIT"
+license = "MIT License"
 
 [[mods]]
 modId = "cullleaves"

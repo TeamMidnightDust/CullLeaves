@@ -22,6 +22,7 @@ configurations {
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
     developmentQuilt.extendsFrom common
+    archivesBaseName = rootProject.archives_base_name + "-quilt"
 }
 
 dependencies {
