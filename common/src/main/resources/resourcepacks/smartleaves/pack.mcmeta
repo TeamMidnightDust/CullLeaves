@@ -1,6 +1,6 @@
 {
   "pack": {
-    "pack_format": 9,
+    "pack_format": 12,
     "description": "§2Makes leaves look identical to OptiFine's smart leaves"
   }
 }
