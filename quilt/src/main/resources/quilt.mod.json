@@ -38,6 +38,12 @@
         "version": "*"
       }
     ],
+    "breaks": [
+      {
+        "id": "sodium",
+        "versions": "<0.4.9"
+      }
+    ],
     "metadata": {
       "name": "Cull Leaves (Quilt)",
       "description": "Adds culling to leaf blocks, providing a huge performance boost over vanilla.",

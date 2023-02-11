@@ -26,8 +26,11 @@
   },
 
   "depends": {
-    "fabric-resource-loader-v0": "*",
-    "minecraft": ">=1.16"
+    "midnightlib": "*",
+    "minecraft": ">=1.19.3"
+  },
+  "breaks": {
+    "sodium": "<0.4.9"
   },
 
   "mixins": [
