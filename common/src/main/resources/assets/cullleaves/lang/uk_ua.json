@@ -1,0 +1,8 @@
+{
+	"cullleaves.midnightconfig.title":"Конфігурація Cull Leaves",
+	"cullleaves.midnightconfig.enabled.tooltip":"Вмикає вибраковування листя, забезпечуючи хороше підвищення продуктивності.\n§cПісля зміни цього параметра ви повинні перезавантажити всі чанки (F3 + A)",
+	"cullleaves.midnightconfig.enabled.tooltip.sodium":"Вмикає вибраковування листя, забезпечуючи хороше підвищення продуктивності",
+	"cullleaves.midnightconfig.enabled":"Увімкнути вибраковування листя",
+	"cullleaves.midnightconfig.sodiumBlockFaceCullingFix.tooltip": "Виправляє пакети ресурсів, які використовують мерехтіння вибраковування листя при використанні Sodium.\nЙмовірно, ви хочете, щоб це було ввімкнено.",
+	"cullleaves.midnightconfig.sodiumBlockFaceCullingFix": "Виправити для мода Sodium вибраковування сторін блоку для листя"
+}
