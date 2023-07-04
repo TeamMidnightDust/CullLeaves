@@ -1,0 +1,8 @@
+{
+	"cullleaves.midnightconfig.title":"Cấu hình Cull Leaves",
+	"cullleaves.midnightconfig.enabled.tooltip":"Cho phép loại bỏ các lá, giúp tăng hiệu suất tốt.\n§cSau khi thay đổi cài đặt này, bạn phải tải lại tất cả các chunk (F3 + A)",
+	"cullleaves.midnightconfig.enabled.tooltip.sodium":"Cho phép loại bỏ lá, giúp tăng hiệu suất tốt",
+	"cullleaves.midnightconfig.enabled":"Kích hoạt loại bỏ lá",
+	"cullleaves.midnightconfig.sodiumBlockFaceCullingFix.tooltip": "Sửa các gói tài nguyên sử dụng loại bỏ lá nhấp nháy khi sử dụng Sodium.\nBạn có thể muốn kích hoạt tính năng này.",
+	"cullleaves.midnightconfig.sodiumBlockFaceCullingFix": "Khắc phục hiện tượng loại bỏ mặt khối của Sodium trên lá"
+}
