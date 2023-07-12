@@ -1,0 +1,8 @@
+{
+	"cullleaves.midnightconfig.title":"Cull Leaves 設定",
+	"cullleaves.midnightconfig.enabled.tooltip":"在樹葉上啟用剃除，獲得良好的效能提升。\n§c更改此設定後，您需要重新載入所有區塊（F3 + A）",
+	"cullleaves.midnightconfig.enabled.tooltip.sodium":"啟用樹葉剔除，獲得良好的效能提升",
+	"cullleaves.midnightconfig.enabled":"啟用樹葉剔除",
+	"cullleaves.midnightconfig.sodiumBlockFaceCullingFix.tooltip": "修復使用 Sodium 的資源包在使用葉子剔除時閃爍的問題。\n您可能想要將此功能啟用。",
+	"cullleaves.midnightconfig.sodiumBlockFaceCullingFix": "修復 Sodium 在葉子上的啟用方塊表面剔除"
+}
