@@ -4,21 +4,7 @@
     "group": "${group}",
     "id": "cullleaves",
     "version": "${version}",
-    "name": "Cull Leaves",
-    "description": "Adds culling to leaf blocks, providing a huge performance boost over vanilla.",
-    "authors": [
-      "Motschen",
-      "TeamMidnightDust"
-    ],
-    "contact": {
-      "homepage": "https://www.midnightdust.eu/",
-      "sources": "https://github.com/TeamMidnightDust/MidnightLib",
-      "issues": "https://github.com/TeamMidnightDust/MidnightLib/issues"
-    },
-    "license": "MIT",
-    "icon": "assets/cullleaves/icon.png",
     "intermediate_mappings": "net.fabricmc:intermediary",
-    "environment": "client",
     "entrypoints": {
       "client_init": [
         "eu.midnightdust.cullleaves.quilt.CullLeavesClientQuilt"
@@ -51,6 +37,7 @@
         "Motschen": "Author",
         "TeamMidnightDust": "Mascot"
       },
+      "environment": "client",
       "contact": {
         "email": "mail@midnightdust.eu",
         "homepage": "https://modrinth.com/mod/cullleaves",
