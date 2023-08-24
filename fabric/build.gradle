@@ -30,6 +30,7 @@ dependencies {
     //modApi "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
     modImplementation "maven.modrinth:midnightlib:${rootProject.midnightlib_version}-fabric"
     include "maven.modrinth:midnightlib:${rootProject.midnightlib_version}-fabric"
+    modRuntimeOnly "maven.modrinth:sodium:${rootProject.sodium_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }

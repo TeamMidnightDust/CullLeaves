@@ -5,7 +5,7 @@
   "minVersion": "0.8",
   "client": [
     "MixinLeavesBlock",
-    "MixinRegionChunkRenderer",
+    "MixinMangroveRootsBlock",
     "MixinSodiumGameOptionPages"
   ],
   "injectors": {

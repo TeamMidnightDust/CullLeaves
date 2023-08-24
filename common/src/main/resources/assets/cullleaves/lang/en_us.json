@@ -3,6 +3,7 @@
 	"cullleaves.midnightconfig.enabled.tooltip":"Enables culling for leaves, providing a nice performance boost.\n§cAfter changing this setting you have to reload all chunks (F3 + A)",
 	"cullleaves.midnightconfig.enabled.tooltip.sodium":"Enables culling for leaves, providing a nice performance boost",
 	"cullleaves.midnightconfig.enabled":"Enable Leaf Culling",
-	"cullleaves.midnightconfig.sodiumBlockFaceCullingFix.tooltip": "Fixes resourcepacks utilizing leaf culling flickering when using Sodium.\nYou probably want this to be enabled.",
-	"cullleaves.midnightconfig.sodiumBlockFaceCullingFix": "Fix Sodium Block Face Culling on Leaves"
+	"cullleaves.midnightconfig.cullRoots.tooltip":"Enables culling for mangrove roots.\n§cAfter changing this setting you have to reload all chunks (F3 + A)",
+	"cullleaves.midnightconfig.cullRoots.tooltip.sodium":"Enables culling for mangrove roots.",
+	"cullleaves.midnightconfig.cullRoots":"Enable Mangrove Root Culling"
 }

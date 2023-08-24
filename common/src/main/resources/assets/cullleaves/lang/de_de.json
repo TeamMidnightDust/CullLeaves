@@ -1,0 +1,9 @@
+{
+	"cullleaves.midnightconfig.title":"Cull Leaves Konfiguration",
+	"cullleaves.midnightconfig.enabled.tooltip":"Aktiviert Culling bei Blättern, was zu besserer Performance führt.\n§cNach dem Ändern dieser Option müssen alle Chunks neugeladen werden (F3 + A)",
+	"cullleaves.midnightconfig.enabled.tooltip.sodium":"Aktiviert Culling bei Blättern, was zu besserer Performance führt.",
+	"cullleaves.midnightconfig.enabled":"Aktiviere Culling von Blättern",
+	"cullleaves.midnightconfig.cullRoots.tooltip":"Aktiviert Culling von Mangrovenwurzeln.\n§cNach dem Ändern dieser Option müssen alle Chunks neugeladen werden (F3 + A)",
+	"cullleaves.midnightconfig.cullRoots.tooltip.sodium":"Aktiviert Culling von Mangrovenwurzeln.",
+	"cullleaves.midnightconfig.cullRoots":"Culling von Mangrovenwurzeln"
+}

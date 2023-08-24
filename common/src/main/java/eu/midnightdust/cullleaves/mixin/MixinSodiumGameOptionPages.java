@@ -36,6 +36,17 @@ public class MixinSodiumGameOptionPages {
                         .setFlags(OptionFlag.REQUIRES_RENDERER_RELOAD)
                         .setImpact(OptionImpact.MEDIUM)
                         .build()
+                ).add(OptionImpl.createBuilder(boolean.class, sodiumOpts)
+                        .setName(Text.translatable("cullleaves.midnightconfig.cullRoots"))
+                        .setTooltip(Text.translatable("cullleaves.midnightconfig.cullRoots.tooltip.sodium"))
+                        .setControl(TickBoxControl::new)
+                        .setBinding((opts, value) -> {
+                            CullLeavesConfig.cullRoots = value;
+                            CullLeavesConfig.write("cullleaves");
+                        }, opts -> CullLeavesConfig.cullRoots)
+                        .setFlags(OptionFlag.REQUIRES_RENDERER_RELOAD)
+                        .setImpact(OptionImpact.MEDIUM)
+                        .build()
                 )
                 .build()
         );
