@@ -3,6 +3,7 @@
 	"cullleaves.midnightconfig.enabled.tooltip":"剔除树叶，提升性能\n§c更改此选项后须要重新加载全部区块（F3 + A）",
 	"cullleaves.midnightconfig.enabled.tooltip.sodium":"剔除树叶，提升性能",
 	"cullleaves.midnightconfig.enabled":"启用树叶剔除",
-	"cullleaves.midnightconfig.sodiumBlockFaceCullingFix.tooltip": "修复钠工作时使用资源包情况下的树叶剔除闪烁的问题\n你大概想开启这个",
-	"cullleaves.midnightconfig.sodiumBlockFaceCullingFix": "修复树叶的钠的方块面剔除"
+	"cullleaves.midnightconfig.cullRoots.tooltip":"启用红树根剔除\n§c更改此选项后须要重新加载全部区块（F3 + A）",
+	"cullleaves.midnightconfig.cullRoots.tooltip.sodium":"启用红树根剔除",
+	"cullleaves.midnightconfig.cullRoots":"启用红树根剔除"
 }
