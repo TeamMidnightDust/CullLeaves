@@ -86,6 +86,10 @@ unifiedPublishing {
                 curseforge = "fabric-api"
                 modrinth = "fabric-api"
             }
+            includes {
+                curseforge = "midnightlib"
+                modrinth = "midnightlib"
+            }
         }
 
         var CURSEFORGE_TOKEN = project.findProperty("CURSEFORGE_TOKEN") ?: System.getenv("CURSEFORGE_TOKEN")

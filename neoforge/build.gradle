@@ -75,7 +75,16 @@ unifiedPublishing {
         changelog = releaseChangelog()
         gameVersions = []
         gameLoaders = ["neoforge"]
+
         mainPublication remapJar
+
+        relations {
+            depends {
+                curseforge = "midnightlib"
+                modrinth = "midnightlib"
+            }
+            includes {}
+        }
 
         var CURSEFORGE_TOKEN = project.findProperty("CURSEFORGE_TOKEN") ?: System.getenv("CURSEFORGE_TOKEN")
         if (CURSEFORGE_TOKEN != null) {
@@ -83,6 +92,7 @@ unifiedPublishing {
                 token = CURSEFORGE_TOKEN
                 id = rootProject.curseforge_id
                 gameVersions.addAll "Java 17", project.minecraft_version
+                releaseType = "alpha"
             }
         }
 
