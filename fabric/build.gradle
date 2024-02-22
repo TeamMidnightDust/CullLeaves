@@ -88,10 +88,10 @@ unifiedPublishing {
             }
         }
 
-        var CURSE_API_KEY = project.findProperty("CURSE_API_KEY") ?: System.getenv("CURSE_API_KEY")
-        if (CURSE_API_KEY != null) {
+        var CURSEFORGE_TOKEN = project.findProperty("CURSEFORGE_TOKEN") ?: System.getenv("CURSEFORGE_TOKEN")
+        if (CURSEFORGE_TOKEN != null) {
             curseforge {
-                token = CURSE_API_KEY
+                token = CURSEFORGE_TOKEN
                 id = rootProject.curseforge_id
                 gameVersions.addAll "Java 17", project.minecraft_version
             }
