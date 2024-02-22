@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[43,)"
+loaderVersion = "[1,)"
 #issueTrackerURL = ""
 license = "MIT License"
 
@@ -13,23 +13,26 @@ Adds culling to leaf blocks, providing a huge performance boost over vanilla.
 '''
 logoFile = "icon.png"
 
+[[mixins]]
+config = "cullleaves.mixins.json"
+
 [[dependencies.cullleaves]]
-modId = "forge"
-mandatory = true
-versionRange = "[43,)"
+modId = "neoforge"
+required = true
+versionRange = "[20.3,)"
 ordering = "NONE"
 side = "CLIENT"
 
 [[dependencies.cullleaves]]
 modId = "minecraft"
-mandatory = true
-versionRange = "[1.19.2,)"
+required = true
+versionRange = "[1.20,)"
 ordering = "NONE"
 side = "CLIENT"
 
 [[dependencies.cullleaves]]
 modId = "midnightlib"
-mandatory = true
+required = true
 versionRange = "[1.0.0,)"
 ordering = "BEFORE"
 side = "CLIENT"
