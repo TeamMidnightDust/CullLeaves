@@ -34,5 +34,5 @@ side = "CLIENT"
 modId = "midnightlib"
 required = true
 versionRange = "[1.0.0,)"
-ordering = "BEFORE"
+ordering = "AFTER"
 side = "CLIENT"

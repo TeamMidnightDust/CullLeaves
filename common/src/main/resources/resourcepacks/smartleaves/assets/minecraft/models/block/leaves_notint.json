@@ -1,0 +1,73 @@
+{
+	"credit": "made by Motschen",
+	"parent": "block/block",
+	"textures": {
+		"particle": "#all"
+	},
+	"elements": [
+		{
+			"name": "main",
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#all", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#all", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#all", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#all", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#all", "cullface": "up"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#all", "cullface": "down"}
+			}
+		},
+		{
+			"name": "bottom",
+			"from": [0, 0.01, 0],
+			"to": [16, 0.01, 16],
+			"faces": {
+				"up": {"uv": [0, 0, 16, 16], "texture": "#all", "cullface": "down"}
+			}
+		},
+		{
+			"name": "west",
+			"from": [0.01, 0, 0],
+			"to": [0.01, 16, 16],
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#all", "cullface": "west"}
+			}
+		},
+		{
+			"name": "north",
+			"from": [0, 0, 0.01],
+			"to": [16, 16, 0.01],
+			"faces": {
+				"south": {"uv": [0, 0, 16, 16], "texture": "#all", "cullface": "north"}
+			}
+		},
+		{
+			"name": "east",
+			"from": [15.99, 0, 0],
+			"to": [15.99, 16, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [23, 8, 8]},
+			"faces": {
+				"west": {"uv": [0, 0, 16, 16], "texture": "#all", "cullface": "east"}
+			}
+		},
+		{
+			"name": "south",
+			"from": [0, 0, 15.99],
+			"to": [16, 16, 15.99],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 23]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#all", "cullface": "south"}
+			}
+		},
+		{
+			"name": "up",
+			"from": [0, 15.99, 0],
+			"to": [16, 15.99, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 23, 8]},
+			"faces": {
+				"down": {"uv": [0, 0, 16, 16], "texture": "#all", "cullface": "up"}
+			}
+		}
+	]
+}

@@ -13,7 +13,7 @@ public class CullLeavesClientFabric implements ClientModInitializer {
     public void onInitializeClient() {
         MidnightConfig.init("cullleaves", CullLeavesConfig.class);
         FabricLoader.getInstance().getModContainer("cullleaves").ifPresent(modContainer -> {
-            ResourceManagerHelper.registerBuiltinResourcePack(new Identifier("cullleaves:smartleaves"), modContainer, ResourcePackActivationType.NORMAL);
+            ResourceManagerHelper.registerBuiltinResourcePack(Identifier.of("cullleaves:smartleaves"), modContainer, ResourcePackActivationType.NORMAL);
         });
     }
 }
