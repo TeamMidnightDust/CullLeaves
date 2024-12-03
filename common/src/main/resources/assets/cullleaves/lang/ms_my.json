@@ -1,0 +1,9 @@
+{
+	"cullleaves.midnightconfig.title": "Konfigurasi Cull Leaves",
+	"cullleaves.midnightconfig.enabled.tooltip": "Mendayakan penyorokan daun yang memberikan peningkatan prestasi yang bagus\n§cSelepas menukar tetapan ini, anda perlu memuat semula semua cebisan (F3 + A)",
+	"cullleaves.midnightconfig.enabled.tooltip.sodium": "Mendayakan penyorokan daun yang memberikan peningkatan prestasi yang bagus",
+	"cullleaves.midnightconfig.enabled": "Dayakan Penyorokan Daun",
+	"cullleaves.midnightconfig.cullRoots.tooltip": "Mendayakan penyorokan akar bakau.\n§cSelepas menukar tetapan ini, anda perlu memuat semula semua cebisan (F3 + A)",
+	"cullleaves.midnightconfig.cullRoots.tooltip.sodium": "Mendayakan penyorokan akar bakau.",
+	"cullleaves.midnightconfig.cullRoots": "Dayakan Penyorokan Akar Bakau"
+}
