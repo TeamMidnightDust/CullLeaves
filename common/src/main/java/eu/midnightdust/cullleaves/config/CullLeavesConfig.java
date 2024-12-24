@@ -11,7 +11,8 @@ public class CullLeavesConfig extends MidnightConfig {
 
     @Override
     public void writeChanges(String modid) {
-        MinecraftClient.getInstance().worldRenderer.reload();
+        var client = MinecraftClient.getInstance();
+        if (client.world != null) client.worldRenderer.reload();
         super.writeChanges(modid);
     }
 }
