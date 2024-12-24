@@ -1,5 +1,6 @@
 package eu.midnightdust.cullleaves.neoforge.mixin.sodium;
 
+import eu.midnightdust.cullleaves.CullLeavesClient;
 import eu.midnightdust.cullleaves.config.CullLeavesConfig;
 import net.caffeinemc.mods.sodium.client.gui.SodiumGameOptionPages;
 import net.caffeinemc.mods.sodium.client.gui.options.OptionFlag;
@@ -31,7 +32,7 @@ public class MixinSodiumGameOptionPages {
                         .setControl(TickBoxControl::new)
                         .setBinding((opts, value) -> {
                             CullLeavesConfig.enabled = value;
-                            CullLeavesConfig.write("cullleaves");
+                            CullLeavesConfig.write(CullLeavesClient.MOD_ID);
                         }, opts -> CullLeavesConfig.enabled)
                         .setFlags(OptionFlag.REQUIRES_RENDERER_RELOAD)
                         .setImpact(OptionImpact.MEDIUM)
@@ -42,7 +43,7 @@ public class MixinSodiumGameOptionPages {
                         .setControl(TickBoxControl::new)
                         .setBinding((opts, value) -> {
                             CullLeavesConfig.cullRoots = value;
-                            CullLeavesConfig.write("cullleaves");
+                            CullLeavesConfig.write(CullLeavesClient.MOD_ID);
                         }, opts -> CullLeavesConfig.cullRoots)
                         .setFlags(OptionFlag.REQUIRES_RENDERER_RELOAD)
                         .setImpact(OptionImpact.MEDIUM)
