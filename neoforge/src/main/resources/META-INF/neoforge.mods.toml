@@ -16,6 +16,9 @@ logoFile = "icon.png"
 [[mixins]]
 config = "cullleaves.mixins.json"
 
+[[mixins]]
+config = "cullleaves-neoforge.mixins.json"
+
 [[dependencies.cullleaves]]
 modId = "neoforge"
 required = true
@@ -26,7 +29,7 @@ side = "CLIENT"
 [[dependencies.cullleaves]]
 modId = "minecraft"
 required = true
-versionRange = "[1.20,)"
+versionRange = "[1.21,)"
 ordering = "NONE"
 side = "CLIENT"
 

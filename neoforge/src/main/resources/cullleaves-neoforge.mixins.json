@@ -1,13 +1,12 @@
 {
   "required": true,
-  "package": "eu.midnightdust.cullleaves.mixin",
+  "package": "eu.midnightdust.cullleaves.neoforge.mixin",
   "plugin": "eu.midnightdust.cullleaves.CullLeavesMixinPlugin",
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
-    "MixinBlockModelRenderer",
-    "MixinLeavesBlock",
-    "MixinMangroveRootsBlock"
+    "sodium.MixinBlockRenderer",
+    "sodium.MixinSodiumGameOptionPages"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -12,7 +12,15 @@ architectury {
 loom {}
 repositories {
     maven { url "https://api.modrinth.com/maven" }
-    maven {url "https://maven.neoforged.net/releases"}
+    maven { url "https://maven.neoforged.net/releases" }
+    maven { url "https://maven.pkg.github.com/ims212/ForgifiedFabricAPI"
+        credentials {
+            username = "IMS212"
+            // Read only token
+            password = "ghp_" + "DEuGv0Z56vnSOYKLCXdsS9svK4nb9K39C1Hn"
+        }
+    }
+    maven{ url "https://maven.su5ed.dev/releases" }
 }
 
 configurations {
@@ -29,6 +37,7 @@ dependencies {
     // Remove the next line if you don't want to depend on the API
     //modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
     modImplementation "maven.modrinth:midnightlib:${rootProject.midnightlib_version}-neoforge"
+    modImplementation "maven.modrinth:sodium:${rootProject.sodium_version}-neoforge"
     //include "maven.modrinth:midnightlib:${rootProject.midnightlib_version}-forge"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }

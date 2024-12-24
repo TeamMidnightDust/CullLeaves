@@ -27,13 +27,14 @@
 
   "depends": {
     "midnightlib": "*",
-    "minecraft": ">=1.19.3"
+    "minecraft": ">=1.21"
   },
   "breaks": {
-    "sodium": "<0.4.9"
+    "sodium": "<0.6.0"
   },
 
   "mixins": [
-    "cullleaves.mixins.json"
+    "cullleaves.mixins.json",
+    "cullleaves-fabric.mixins.json"
   ]
 }

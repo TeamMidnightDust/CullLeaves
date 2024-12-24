@@ -1,6 +1,6 @@
 package eu.midnightdust.cullleaves.mixin;
 
-import eu.midnightdust.cullleaves.config.CullLeavesConfig;
+import eu.midnightdust.cullleaves.CullLeavesClient;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.*;
@@ -16,11 +16,7 @@ public abstract class MixinMangroveRootsBlock extends Block {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public boolean isSideInvisible(BlockState state, BlockState neighborState, Direction offset) {
-        if (CullLeavesConfig.cullRoots) {
-            return neighborState.getBlock() instanceof MangroveRootsBlock;
-        }
-        else return false;
+        return CullLeavesClient.isRootSideInvisible(neighborState);
     }
 }

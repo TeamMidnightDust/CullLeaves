@@ -1,13 +1,12 @@
-package eu.midnightdust.cullleaves.mixin;
+package eu.midnightdust.cullleaves.fabric.mixin.sodium;
 
 import eu.midnightdust.cullleaves.config.CullLeavesConfig;
-import me.jellysquid.mods.sodium.client.gui.SodiumGameOptionPages;
-import me.jellysquid.mods.sodium.client.gui.options.OptionFlag;
-import me.jellysquid.mods.sodium.client.gui.options.OptionGroup;
-import me.jellysquid.mods.sodium.client.gui.options.OptionImpact;
-import me.jellysquid.mods.sodium.client.gui.options.OptionImpl;
-import me.jellysquid.mods.sodium.client.gui.options.control.TickBoxControl;
-import me.jellysquid.mods.sodium.client.gui.options.storage.SodiumOptionsStorage;
+import net.caffeinemc.mods.sodium.client.gui.options.OptionFlag;
+import net.caffeinemc.mods.sodium.client.gui.options.OptionGroup;
+import net.caffeinemc.mods.sodium.client.gui.options.OptionImpact;
+import net.caffeinemc.mods.sodium.client.gui.options.OptionImpl;
+import net.caffeinemc.mods.sodium.client.gui.options.control.TickBoxControl;
+import net.caffeinemc.mods.sodium.client.gui.options.storage.SodiumOptionsStorage;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 import java.util.List;
 
-@Mixin(value = SodiumGameOptionPages.class, remap = false)
+@Mixin(value = net.caffeinemc.mods.sodium.client.gui.SodiumGameOptionPages.class, remap = false)
 public class MixinSodiumGameOptionPages {
 
     @Shadow @Final private static SodiumOptionsStorage sodiumOpts;
