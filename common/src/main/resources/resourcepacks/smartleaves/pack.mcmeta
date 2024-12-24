@@ -2,6 +2,9 @@
   "pack": {
     "pack_format": 15,
     "supported_formats": [15, 99],
-    "description": "§2Makes leaves look identical to OptiFine's smart leaves"
+    "description": {
+      "translate": "cullleaves.resourcepack.name",
+      "fallback": "§2Makes leaves look identical to OptiFine's smart leaves"
+    }
   }
 }

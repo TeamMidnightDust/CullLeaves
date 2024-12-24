@@ -1,5 +1,10 @@
 {
-	"cullleaves.midnightconfig.title":"Настройки Cull Leaves",
-	"cullleaves.midnightconfig.enabled.tooltip":"После изменения этого параметра необходимо перезагрузить чанки (F3 + A)",
-	"cullleaves.midnightconfig.enabled":"Включён Cull Leaves"
+	"cullleaves.midnightconfig.title": "Настройки отбраковки листьев",
+	"cullleaves.midnightconfig.enabled.tooltip": "Включает отбраковку листьев, что значительно повышает производительность.\n§cПосле изменения этого параметра вам необходимо перезагрузить все чанки (F3 + A)",
+	"cullleaves.midnightconfig.enabled.tooltip.sodium": "Включает отбраковку листьев, что значительно повышает производительность",
+	"cullleaves.midnightconfig.enabled": "Включить отбраковку листьев",
+	"cullleaves.midnightconfig.cullRoots.tooltip": "Включает отбраковку мангровых корней.\n§cПосле изменения этого параметра вам необходимо перезагрузить все чанки (F3 + A)",
+	"cullleaves.midnightconfig.cullRoots.tooltip.sodium": "Включает отбраковку мангровых корней.",
+	"cullleaves.midnightconfig.cullRoots": "Включить отбраковку мангровых корней",
+	"cullleaves.resourcepack.name": "§2Делает листья идентичными 'умным листьям' в OptiFine"
 }
