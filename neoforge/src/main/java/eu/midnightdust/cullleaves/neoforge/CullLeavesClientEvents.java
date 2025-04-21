@@ -8,7 +8,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
+import net.neoforged.neoforge.client.event.AddClientReloadListenersEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforgespi.locating.IModFile;
 
@@ -36,7 +36,7 @@ public class CullLeavesClientEvents {
         }));
     }
     @SubscribeEvent
-    public static void onResourceReload(RegisterClientReloadListenersEvent event) {
-        event.registerReloadListener(CullLeavesClient.ReloadListener.INSTANCE);
+    public static void onResourceReload(AddClientReloadListenersEvent event) {
+        event.addListener(Identifier.of(CullLeavesClient.MOD_ID, "resourcepack_options"), CullLeavesClient.ReloadListener.INSTANCE);
     }
 }

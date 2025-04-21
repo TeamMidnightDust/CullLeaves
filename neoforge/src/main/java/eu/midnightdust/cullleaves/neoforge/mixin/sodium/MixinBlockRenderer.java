@@ -5,7 +5,7 @@ import net.caffeinemc.mods.sodium.client.render.chunk.compile.pipeline.BlockRend
 import net.minecraft.block.BlockState;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.model.BakedModel;
+import net.minecraft.client.render.model.BlockStateModel;
 import net.minecraft.util.math.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -19,7 +19,7 @@ public abstract class MixinBlockRenderer {
     @Unique private static final MinecraftClient cullleaves$client = MinecraftClient.getInstance();
 
     @Inject(at = @At("HEAD"), method = "renderModel", cancellable = true)
-    public void cullleaves$cancelRendering(BakedModel model, BlockState state, BlockPos pos, BlockPos origin, CallbackInfo ci) {
+    public void cullleaves$cancelRendering(BlockStateModel model, BlockState state, BlockPos pos, BlockPos origin, CallbackInfo ci) {
         if (CullLeavesClient.forceHideInnerLeaves && state.getBlock() instanceof LeavesBlock && CullLeavesClient.shouldHideBlock(cullleaves$client.world, pos))
             ci.cancel();
     }
