@@ -1,4 +1,5 @@
 {
+	"modmenu.descriptionTranslation.cullleaves": "为树叶方块添加了剔除功能，与原版相比性能大幅提升。",
 	"cullleaves.midnightconfig.title":"Cull Leaves 选项",
 	"cullleaves.midnightconfig.enabled.tooltip":"剔除树叶，提升性能\n§c更改此选项后须要重新加载全部区块（F3 + A）",
 	"cullleaves.midnightconfig.enabled.tooltip.sodium":"剔除树叶，提升性能",
