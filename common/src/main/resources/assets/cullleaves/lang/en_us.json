@@ -1,4 +1,5 @@
 {
+	"modmenu.descriptionTranslation.cullleaves": "Adds culling to leaf blocks, providing a huge performance boost over vanilla.",
 	"cullleaves.midnightconfig.title":"Cull Leaves Config",
 	"cullleaves.midnightconfig.enabled.tooltip":"Enables culling for leaves, providing a nice performance boost.\n§cAfter changing this setting you have to reload all chunks (F3 + A)",
 	"cullleaves.midnightconfig.enabled.tooltip.sodium":"Enables culling for leaves, providing a nice performance boost",
