@@ -37,7 +37,7 @@ dependencies {
     // Remove the next line if you don't want to depend on the API
     //modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
     modImplementation "maven.modrinth:midnightlib:${rootProject.midnightlib_version}-neoforge"
-    modImplementation "maven.modrinth:sodium:${rootProject.sodium_version}-neoforge"
+    modCompileOnlyApi "maven.modrinth:sodium:${rootProject.sodium_version}-neoforge"
     //include "maven.modrinth:midnightlib:${rootProject.midnightlib_version}-forge"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }

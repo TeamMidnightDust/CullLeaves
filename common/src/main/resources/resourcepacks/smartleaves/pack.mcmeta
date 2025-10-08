@@ -1,9 +1,11 @@
 {
   "pack": {
     "pack_format": 15,
-    "supported_formats": [15, 99],
+    "supported_formats": [15, 255],
+    "min_format": 15,
+    "max_format": 255,
     "description": {
-      "translate": "cullleaves.resourcepack.name",
+      "translate": "cullleaves.resourcepack.description",
       "fallback": "§2Makes leaves look identical to OptiFine's smart leaves"
     }
   }

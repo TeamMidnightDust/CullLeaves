@@ -7,6 +7,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
+import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.resource.ResourceType;
@@ -19,15 +20,6 @@ public class CullLeavesClientFabric implements ClientModInitializer {
         FabricLoader.getInstance().getModContainer("cullleaves").ifPresent(modContainer -> {
             ResourceManagerHelper.registerBuiltinResourcePack(Identifier.of(CullLeavesClient.MOD_ID,"smartleaves"), modContainer, ResourcePackActivationType.NORMAL);
         });
-        ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(new SimpleSynchronousResourceReloadListener() {
-            @Override
-            public Identifier getFabricId() {
-                return Identifier.of(CullLeavesClient.MOD_ID, "resourcepack_options");
-            }
-            @Override
-            public void reload(ResourceManager manager) {
-                CullLeavesClient.ReloadListener.INSTANCE.reload(manager);
-            }
-        });
+        ResourceLoader.get(ResourceType.CLIENT_RESOURCES).registerReloader(Identifier.of(CullLeavesClient.MOD_ID, "resourcepack_options"), CullLeavesClient.ReloadListener.INSTANCE);
     }
 }

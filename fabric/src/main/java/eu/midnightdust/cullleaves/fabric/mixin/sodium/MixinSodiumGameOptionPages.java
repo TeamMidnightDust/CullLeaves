@@ -26,7 +26,7 @@ public class MixinSodiumGameOptionPages {
         groups.add(OptionGroup.createBuilder()
                 .add(OptionImpl.createBuilder(boolean.class, sodiumOpts)
                         .setName(Text.translatable("cullleaves.midnightconfig.enabled"))
-                        .setTooltip(Text.translatable("cullleaves.midnightconfig.enabled.tooltip.sodium"))
+                        .setTooltip(Text.translatable("cullleaves.midnightconfig.enabled.tooltip"))
                         .setControl(TickBoxControl::new)
                         .setBinding((opts, value) -> {
                             CullLeavesConfig.enabled = value;
@@ -37,7 +37,7 @@ public class MixinSodiumGameOptionPages {
                         .build()
                 ).add(OptionImpl.createBuilder(boolean.class, sodiumOpts)
                         .setName(Text.translatable("cullleaves.midnightconfig.cullRoots"))
-                        .setTooltip(Text.translatable("cullleaves.midnightconfig.cullRoots.tooltip.sodium"))
+                        .setTooltip(Text.translatable("cullleaves.midnightconfig.cullRoots.tooltip"))
                         .setControl(TickBoxControl::new)
                         .setBinding((opts, value) -> {
                             CullLeavesConfig.cullRoots = value;

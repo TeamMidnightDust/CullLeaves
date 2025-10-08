@@ -10,9 +10,9 @@ public class CullLeavesConfig extends MidnightConfig {
     public static boolean cullRoots = true;
 
     @Override
-    public void writeChanges(String modid) {
+    public void writeChanges() {
         var client = MinecraftClient.getInstance();
-        if (client.world != null) client.worldRenderer.reload();
-        super.writeChanges(modid);
+        if (client != null && client.world != null) client.worldRenderer.reload();
+        super.writeChanges();
     }
 }
