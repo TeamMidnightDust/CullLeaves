@@ -136,8 +136,8 @@ public class CullLeavesClient /*? fabric {*/ implements ClientModInitializer /*?
         MidnightConfig.init(CullLeavesClient.MOD_ID, CullLeavesConfig.class);
     }
 
-    @EventBusSubscriber(modid = CullLeavesClient.MOD_ID, value = Dist.CLIENT)
-    public class CullLeavesClientEvents {
+    @EventBusSubscriber(modid = CullLeavesClient.MOD_ID, value = Dist.CLIENT/^? if <=1.21.5 {^//^, bus = EventBusSubscriber.Bus.MOD ^//^?}^/)
+    public static class CullLeavesClientEvents {
         @SubscribeEvent
         public static void addPackFinders(AddPackFindersEvent event) {
             if (event.getPackType() == PackType.CLIENT_RESOURCES) {
