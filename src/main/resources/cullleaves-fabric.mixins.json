@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "eu.midnightdust.cullleaves.mixin",
+  "plugin": "eu.midnightdust.cullleaves.CullLeavesMixinPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "client": [
+    "sodium.MixinBlockRenderer",
+    "sodium.MixinSodiumGameOptionPages"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
