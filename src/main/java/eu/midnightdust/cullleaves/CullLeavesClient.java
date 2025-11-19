@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import eu.midnightdust.cullleaves.config.CullLeavesConfig;
 import eu.midnightdust.lib.config.MidnightConfig;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -24,9 +25,14 @@ import java.io.IOException;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
-import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
 import net.fabricmc.loader.api.FabricLoader;
-//?} else if neoforge {
+//? if >= 1.21.9 {
+import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
+//?} else {
+/*import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
+*///?}
+
+//?} neoforge {
 /*import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
@@ -110,7 +116,20 @@ public class CullLeavesClient /*? fabric {*/ implements ClientModInitializer /*?
         FabricLoader.getInstance().getModContainer("cullleaves").ifPresent(modContainer -> {
             ResourceManagerHelper.registerBuiltinResourcePack(ResourceLocation.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "smartleaves"), modContainer, ResourcePackActivationType.NORMAL);
         });
+        //? if >= 1.21.9 {
         ResourceLoader.get(PackType.CLIENT_RESOURCES).registerReloader(ResourceLocation.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "resourcepack_options"), CullLeavesClient.ReloadListener.INSTANCE);
+        //?} else {
+        /*ResourceManagerHelper.get(PackType.CLIENT_RESOURCES).registerReloadListener(new SimpleSynchronousResourceReloadListener() {
+            @Override
+            public ResourceLocation getFabricId() {
+                return ResourceLocation.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "resourcepack_options");
+            }
+            @Override
+            public void onResourceManagerReload(ResourceManager manager) {
+                CullLeavesClient.ReloadListener.INSTANCE.onResourceManagerReload(manager);
+            }
+        });
+        *///?}
     }
     //?} else if neoforge {
     /*public CullLeavesClient() {
