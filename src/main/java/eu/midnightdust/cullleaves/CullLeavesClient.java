@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 //? fabric {
-import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
@@ -48,9 +48,28 @@ import net.neoforged.neoforge.event.AddPackFindersEvent;
     ^///?}
 *///?}
 
-//? neoforge
+//? forge {
+/*import net.minecraft.network.chat.Component;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackSource;
+
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.ConfigScreenHandler;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AddPackFindersEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.IExtensionPoint;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.forgespi.locating.IModFile;
+import net.minecraftforge.network.NetworkConstants;
+import net.minecraftforge.resource.PathPackResources;
+*///?}
+
+//? neoforge || forge
 /*@Mod(CullLeavesClient.MOD_ID)*/
-public class CullLeavesClient /*? fabric {*/ implements ClientModInitializer /*?}*/ {
+public class CullLeavesClient /*? fabric {*/ implements ModInitializer /*?}*/ {
     public static final String MOD_ID = "cullleaves";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
@@ -115,7 +134,7 @@ public class CullLeavesClient /*? fabric {*/ implements ClientModInitializer /*?
 
     //? fabric {
     @Override
-    public void onInitializeClient() {
+    public void onInitialize() {
         MidnightConfig.init(CullLeavesClient.MOD_ID, CullLeavesConfig.class);
         FabricLoader.getInstance().getModContainer("cullleaves").ifPresent(modContainer -> {
             ResourceManagerHelper.registerBuiltinResourcePack(ResourceLocation.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "smartleaves"), modContainer, ResourcePackActivationType.NORMAL);
@@ -151,6 +170,32 @@ public class CullLeavesClient /*? fabric {*/ implements ClientModInitializer /*?
         @SubscribeEvent
         public static void onResourceReload(/^? if >= 1.21.4 {^/ AddClientReloadListenersEvent /^?} else {^//^RegisterClientReloadListenersEvent ^//^?}^/ event) {
             event. /^? if >= 1.21.4 {^/ addListener(ResourceLocation.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "resourcepack_options"), /^?} else {^/ /^registerReloadListener( ^//^?}^/ CullLeavesClient.ReloadListener.INSTANCE);
+        }
+    }
+    *///?} else if forge {
+    /*public CullLeavesClient() {
+        MidnightConfig.init(MOD_ID, CullLeavesConfig.class);
+        ModLoadingContext.get().registerExtensionPoint(IExtensionPoint.DisplayTest.class, () -> new IExtensionPoint.DisplayTest(() -> NetworkConstants.IGNORESERVERONLY, (remote, server) -> true));
+        ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class, () ->
+                new ConfigScreenHandler.ConfigScreenFactory((client, parent) -> MidnightConfig.getScreen(parent, "cullleaves")));
+        //MinecraftForge.EVENT_BUS.register(new CullLeavesClientEvents());
+    }
+
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class CullLeavesClientEvents {
+        @SubscribeEvent
+        public static void addPackFinders(AddPackFindersEvent event) {
+            if (event.getPackType() == PackType.CLIENT_RESOURCES) {
+                registerResourcePack(event, ResourceLocation.fromNamespaceAndPath(MOD_ID, "smartleaves"), false);
+            }
+        }
+        private static void registerResourcePack(AddPackFindersEvent event, ResourceLocation id, boolean alwaysEnabled) {
+            event.addRepositorySource((profileAdder -> {
+                IModFile file = ModList.get().getModFileById(id.getNamespace()).getFile();
+                try (PathPackResources pack = new PathPackResources(id.toString(), true, file.findResource("resourcepacks/"+id.getPath()))) {
+                    profileAdder.accept(Pack.readMetaAndCreate(id.toString(), Component.literal(id.getNamespace()+"/"+id.getPath()), alwaysEnabled, a -> pack, PackType.CLIENT_RESOURCES, Pack.Position.TOP, PackSource.BUILT_IN));
+                } catch (NullPointerException e) {e.printStackTrace();}
+            }));
         }
     }
     *///?}

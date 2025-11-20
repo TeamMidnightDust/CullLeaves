@@ -6,7 +6,7 @@
   "client": [
     "MixinBlockModelRenderer",
     "MixinLeavesBlock",
-    "MixinMangroveRootsBlock",
+    "MixinMangroveRootsBlock"
   ],
   "injectors": {
     "defaultRequire": 1

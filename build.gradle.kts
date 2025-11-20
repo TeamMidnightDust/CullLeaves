@@ -40,6 +40,8 @@ dependencies {
     }
     if (loader == "forge") {
         "forge"("net.minecraftforge:forge:${minecraft}-${mod.dep("forge_loader")}")
+
+        modCompileOnly("maven.modrinth:xenon-forge:0.3.31")
     }
     if (loader == "neoforge") {
         "neoForge"("net.neoforged:neoforge:${mod.dep("neoforge_loader")}")
@@ -57,7 +59,7 @@ loom {
         }
     }
     if (loader == "forge") {
-        forge.mixinConfigs("midnightlib.mixins.json")
+        forge.mixinConfigs("cullleaves.mixins.json", "cullleaves-neoforge.mixins.json")
     }
 }
 
@@ -223,5 +225,13 @@ tasks.build {
 stonecutter {
     constants {
         arrayOf("fabric", "neoforge", "forge").forEach { it -> put(it, loader == it) }
+    }
+    replacements.string {
+        direction = eval(current.version, ">=1.21")
+        replace("new ResourceLocation", "ResourceLocation.fromNamespaceAndPath")
+    }
+    replacements.string {
+        direction = eval(current.version, ">=1.21")
+        replace("me.jellysquid.mods.sodium", "net.caffeinemc.mods.sodium")
     }
 }
