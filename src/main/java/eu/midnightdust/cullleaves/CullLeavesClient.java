@@ -40,8 +40,12 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.client.event.AddClientReloadListenersEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
+    //? if >= 1.21.4 {
+    import net.neoforged.neoforge.client.event.AddClientReloadListenersEvent;
+    //?} else {
+    /^import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
+    ^///?}
 *///?}
 
 //? neoforge
@@ -145,8 +149,8 @@ public class CullLeavesClient /*? fabric {*/ implements ClientModInitializer /*?
             }
         }
         @SubscribeEvent
-        public static void onResourceReload(AddClientReloadListenersEvent event) {
-            event.addListener(ResourceLocation.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "resourcepack_options"), CullLeavesClient.ReloadListener.INSTANCE);
+        public static void onResourceReload(/^? if >= 1.21.4 {^/ AddClientReloadListenersEvent /^?} else {^//^RegisterClientReloadListenersEvent ^//^?}^/ event) {
+            event. /^? if >= 1.21.4 {^/ addListener(ResourceLocation.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "resourcepack_options"), /^?} else {^/ /^registerReloadListener( ^//^?}^/ CullLeavesClient.ReloadListener.INSTANCE);
         }
     }
     *///?}
