@@ -24,13 +24,15 @@ repositories {
     maven("https://maven.nucleoid.xyz/")
 
     // MidnightLib
-    maven("https://maven.midnightdust.eu/snapshots/")
+    maven("https://maven.midnightdust.eu/releases/")
 }
 dependencies {
     minecraft("com.mojang:minecraft:$minecraft")
 
     // MidnightLib
-    modImplementation ("eu.midnightdust:midnightlib:${mod.dep("midnightlib_version")}+${minecraft}-${loader}")
+    val midnightlib = "eu.midnightdust:midnightlib:${mod.dep("midnightlib_version")}+${minecraft}-${loader}"
+    modImplementation(midnightlib)
+    include(midnightlib)
 
     if (loader == "fabric") {
         modImplementation("net.fabricmc:fabric-loader:${mod.dep("fabric_loader")}")
@@ -71,21 +73,24 @@ publishMods {
     file = project.tasks.remapJar.get().archiveFile
     dryRun = modrinthToken == null || curseforgeToken == null
 
-    displayName = "${mod.name} ${loader.replaceFirstChar { it.uppercase() }} ${property("mod.mc_title")}-${mod.version}"
-    version = mod.version
+    displayName = "${mod.name} ${mod.version} - ${loader.replaceFirstChar { it.uppercase() }} ${property("mod.mc_title")}"
+    version = "${mod.version}+${property("mod.mc_title")}-${loader}"
     changelog = rootProject.file("CHANGELOG.md").readText()
-    type = BETA
+    type = STABLE
 
     modLoaders.add(loader)
+    if (loader == "fabric") {
+        modLoaders.add("quilt")
+    }
 
     val targets = property("mod.mc_targets").toString().split(' ')
     modrinth {
         projectId = property("publish.modrinth").toString()
         accessToken = modrinthToken
         targets.forEach(minecraftVersions::add)
+        requires("midnightlib")
         if (loader == "fabric") {
             requires("fabric-api")
-            optional("modmenu")
         }
     }
 
@@ -93,41 +98,28 @@ publishMods {
         projectId = property("publish.curseforge").toString()
         accessToken = curseforgeToken.toString()
         targets.forEach(minecraftVersions::add)
+        requires("midnightlib")
         if (loader == "fabric") {
             requires("fabric-api")
-            optional("modmenu")
         }
     }
 
-    github {
-        accessToken = githubToken
-        repository = "TeamMidnightDust/CullLeaves"
-        commitish = "multiversion" // This is the branch the release tag will be created from
-
-        tagName = "v" + properties["mod.version"]
-
-        // Allow the release to be initially created without any files.
-        allowEmptyFiles = true
-    }
-}
-//publishing {
-//    publications {
-//        create<MavenPublication>("mavenJava") {
-//            pom {
-//                groupId = "eu.midnightdust"
-//                artifactId = "midnightlib"
-//                version = project.version
+//    github {
+//        accessToken = githubToken
+//        repository = "TeamMidnightDust/CullLeaves"
+//        commitish = "multiversion" // This is the branch the release tag will be created from
 //
-//                from(components["java"])
-//            }
-//        }
+//        tagName = "v" + properties["mod.version"]
+//
+//        // Allow the release to be initially created without any files.
+//        allowEmptyFiles = true
 //    }
-//}
+}
 publishing {
     repositories {
         maven {
             name = "MidnightDust"
-            url = uri("https://maven.midnightdust.eu/snapshots")
+            url = uri("https://maven.midnightdust.eu/releases")
             credentials(PasswordCredentials::class)
         }
     }

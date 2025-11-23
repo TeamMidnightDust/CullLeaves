@@ -30,7 +30,7 @@
     "minecraft": "${minecraft}"
   },
   "breaks": {
-    "sodium": "<0.6.0"
+    "sodium": ">=0.6.0"
   },
 
   "mixins": [

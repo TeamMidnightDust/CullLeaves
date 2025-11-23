@@ -29,7 +29,7 @@ side = "CLIENT"
 [[dependencies.cullleaves]]
 modId = "minecraft"
 required = true
-versionRange = "[1.21,)"
+versionRange = "${minecraft}"
 ordering = "NONE"
 side = "CLIENT"
 
