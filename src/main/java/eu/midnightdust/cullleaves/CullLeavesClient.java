@@ -7,7 +7,7 @@ import eu.midnightdust.lib.config.MidnightConfig;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.PackType;
 
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -137,15 +137,15 @@ public class CullLeavesClient /*? fabric {*/ implements ModInitializer /*?}*/ {
     public void onInitialize() {
         MidnightConfig.init(CullLeavesClient.MOD_ID, CullLeavesConfig.class);
         FabricLoader.getInstance().getModContainer("cullleaves").ifPresent(modContainer -> {
-            ResourceManagerHelper.registerBuiltinResourcePack(ResourceLocation.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "smartleaves"), modContainer, ResourcePackActivationType.NORMAL);
+            ResourceManagerHelper.registerBuiltinResourcePack(Identifier.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "smartleaves"), modContainer, ResourcePackActivationType.NORMAL);
         });
         //? if >= 1.21.9 {
-        ResourceLoader.get(PackType.CLIENT_RESOURCES).registerReloader(ResourceLocation.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "resourcepack_options"), CullLeavesClient.ReloadListener.INSTANCE);
+        ResourceLoader.get(PackType.CLIENT_RESOURCES).registerReloader(Identifier.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "resourcepack_options"), CullLeavesClient.ReloadListener.INSTANCE);
         //?} else {
         /*ResourceManagerHelper.get(PackType.CLIENT_RESOURCES).registerReloadListener(new SimpleSynchronousResourceReloadListener() {
             @Override
-            public ResourceLocation getFabricId() {
-                return ResourceLocation.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "resourcepack_options");
+            public Identifier getFabricId() {
+                return Identifier.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "resourcepack_options");
             }
             @Override
             public void onResourceManagerReload(ResourceManager manager) {
@@ -164,12 +164,12 @@ public class CullLeavesClient /*? fabric {*/ implements ModInitializer /*?}*/ {
         @SubscribeEvent
         public static void addPackFinders(AddPackFindersEvent event) {
             if (event.getPackType() == PackType.CLIENT_RESOURCES) {
-                event.addPackFinders(ResourceLocation.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "resourcepacks/smartleaves"), PackType.CLIENT_RESOURCES, Component.literal("cullleaves/smartleaves"), PackSource.BUILT_IN, false, Pack.Position.TOP);
+                event.addPackFinders(Identifier.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "resourcepacks/smartleaves"), PackType.CLIENT_RESOURCES, Component.literal("cullleaves/smartleaves"), PackSource.BUILT_IN, false, Pack.Position.TOP);
             }
         }
         @SubscribeEvent
         public static void onResourceReload(/^? if >= 1.21.4 {^/ AddClientReloadListenersEvent /^?} else {^//^RegisterClientReloadListenersEvent ^//^?}^/ event) {
-            event. /^? if >= 1.21.4 {^/ addListener(ResourceLocation.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "resourcepack_options"), /^?} else {^/ /^registerReloadListener( ^//^?}^/ CullLeavesClient.ReloadListener.INSTANCE);
+            event. /^? if >= 1.21.4 {^/ addListener(Identifier.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "resourcepack_options"), /^?} else {^/ /^registerReloadListener( ^//^?}^/ CullLeavesClient.ReloadListener.INSTANCE);
         }
     }
     *///?} else if forge {
@@ -186,10 +186,10 @@ public class CullLeavesClient /*? fabric {*/ implements ModInitializer /*?}*/ {
         @SubscribeEvent
         public static void addPackFinders(AddPackFindersEvent event) {
             if (event.getPackType() == PackType.CLIENT_RESOURCES) {
-                registerResourcePack(event, ResourceLocation.fromNamespaceAndPath(MOD_ID, "smartleaves"), false);
+                registerResourcePack(event, Identifier.fromNamespaceAndPath(MOD_ID, "smartleaves"), false);
             }
         }
-        private static void registerResourcePack(AddPackFindersEvent event, ResourceLocation id, boolean alwaysEnabled) {
+        private static void registerResourcePack(AddPackFindersEvent event, Identifier id, boolean alwaysEnabled) {
             event.addRepositorySource((profileAdder -> {
                 IModFile file = ModList.get().getModFileById(id.getNamespace()).getFile();
                 try (PathPackResources pack = new PathPackResources(id.toString(), true, file.findResource("resourcepacks/"+id.getPath()))) {

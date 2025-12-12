@@ -21,7 +21,7 @@ import net.caffeinemc.mods.sodium.client.render.chunk.compile.pipeline.BlockRend
 *///?}
 
 //? if fabric && >= 1.21 {
-import net.caffeinemc.mods.sodium.client.render.frapi.render.AbstractBlockRenderContext;
+/*? if < 1.21.11 {*/ /*import net.caffeinemc.mods.sodium.client.render.frapi.render.AbstractBlockRenderContext*/ /*?} else {*/ import net.caffeinemc.mods.sodium.client.render.model.AbstractBlockRenderContext; /*?}*/;
 //?} else {
 /*import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Unique;

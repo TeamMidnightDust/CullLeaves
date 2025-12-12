@@ -25,6 +25,9 @@ repositories {
 
     // MidnightLib
     maven("https://maven.midnightdust.eu/releases/")
+
+    // Sodium
+    maven("https://maven.caffeinemc.net/releases")
 }
 dependencies {
     minecraft("com.mojang:minecraft:$minecraft")
@@ -47,7 +50,11 @@ dependencies {
     }
     if (loader == "neoforge") {
         "neoForge"("net.neoforged:neoforge:${mod.dep("neoforge_loader")}")
-        modCompileOnly("maven.modrinth:sodium:${mod.dep("sodium_version")}-neoforge")
+
+        if (minecraft == "1.21.11")
+            modCompileOnly("net.caffeinemc:sodium-neoforge-mod:0.8.0+mc1.21.11")
+        else
+            modCompileOnly("maven.modrinth:sodium:${mod.dep("sodium_version")}-neoforge")
     }
     mappings (loom.officialMojangMappings())
 }
@@ -217,6 +224,10 @@ tasks.build {
 stonecutter {
     constants {
         arrayOf("fabric", "neoforge", "forge").forEach { it -> put(it, loader == it) }
+    }
+    replacements.string {
+        direction = eval(current.version, ">=1.21.11")
+        replace("ResourceLocation", "Identifier")
     }
     replacements.string {
         direction = eval(current.version, ">=1.21")
