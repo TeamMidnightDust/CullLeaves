@@ -27,7 +27,7 @@ public class SodiumConfigEntryPoint implements ConfigEntryPoint {
                                 .setImpact(OptionImpact.MEDIUM)
                 )
                 .addOption(
-                        builder.createBooleanOption(Identifier.fromNamespaceAndPath(MOD_ID, "cullRoots"))
+                        builder.createBooleanOption(Identifier.fromNamespaceAndPath(MOD_ID, "cull_roots"))
                                 .setDefaultValue(true)
                                 .setName(Component.translatable("cullleaves.midnightconfig.cullRoots"))
                                 .setTooltip(Component.translatable("cullleaves.midnightconfig.cullRoots.tooltip"))

@@ -1,3 +1,6 @@
+### CullLeaves v4.1.1.1
+- Fix crash due to invalid identifier in new Sodium compat
+
 ## CullLeaves v4.1.1
 - Port to 1.21.11 (Mounts of Mayhem)
 - Add support for Sodium 0.8.0
