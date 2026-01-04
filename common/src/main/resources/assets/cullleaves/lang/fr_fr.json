@@ -1,0 +1,10 @@
+{
+    "modmenu.descriptionTranslation.cullleaves": "Ajoute l’occlusion des faces aux blocs de feuilles, offrant un gain de performances très important par rapport au jeu de base.",
+    "cullleaves.midnightconfig.title": "Configuration de l’occlusion des feuilles",
+    "cullleaves.midnightconfig.enabled.tooltip": "Active l’occlusion des faces pour les feuilles, offrant un gain de performances appréciable.\n§cAprès avoir modifié ce paramètre, vous devez recharger tous les chunks (F3 + A).",
+    "cullleaves.midnightconfig.enabled.tooltip.sodium": "Active l’occlusion des faces pour les feuilles, offrant un gain de performances appréciable.",
+    "cullleaves.midnightconfig.enabled": "Activer l’occlusion des feuilles",
+    "cullleaves.midnightconfig.cullRoots.tooltip": "Active l’occlusion des faces pour les racines de mangrove.\n§cAprès avoir modifié ce paramètre, vous devez recharger tous les chunks (F3 + A).",
+    "cullleaves.midnightconfig.cullRoots.tooltip.sodium": "Active l’occlusion des faces pour les racines de mangrove.",
+    "cullleaves.midnightconfig.cullRoots": "Activer l’occlusion des racines de mangrove"
+}
