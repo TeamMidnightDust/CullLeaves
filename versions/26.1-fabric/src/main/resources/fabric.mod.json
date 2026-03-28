@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "cullleaves",
+  "version": "${version}",
+
+  "name": "Cull Leaves",
+  "description": "Adds culling to leaf blocks, providing a huge performance boost over vanilla.",
+  "authors": [
+    "Motschen",
+    "TeamMidnightDust"
+  ],
+  "contact": {
+    "homepage": "https://www.midnightdust.eu/",
+    "sources": "https://github.com/TeamMidnightDust/CullLeaves",
+    "issues": "https://github.com/TeamMidnightDust/CullLeaves/issues"
+  },
+
+  "license": "MIT",
+  "icon": "assets/cullleaves/icon.png",
+
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "eu.midnightdust.cullleaves.CullLeavesClient"
+    ],
+    "sodium:config_api_user": [
+      "eu.midnightdust.cullleaves.config.SodiumConfigEntryPoint"
+    ]
+  },
+
+  "depends": {
+    "midnightlib": "*",
+    "minecraft": "${minecraft}"
+  },
+  "breaks": {
+    "sodium": "<0.6.0"
+  },
+
+  "mixins": [
+    "cullleaves.mixins.json",
+    "cullleaves-fabric.mixins.json"
+  ]
+}

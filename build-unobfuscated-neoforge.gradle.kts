@@ -1,13 +1,14 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
 plugins {
-    id("dev.architectury.loom")
-    id("architectury-plugin")
+    id("net.neoforged.moddev") version "2.0.141" // For unobfuscated releases (>= 26.1)
     id("me.modmuss50.mod-publish-plugin")
-    id("com.github.johnrengelman.shadow")
     `maven-publish`
 }
 
 val minecraft = stonecutter.current.version
-val loader = loom.platform.get().name.lowercase()
+val loader = stonecutter.current.project.substringAfterLast('-')
 
 version = "${mod.version}+$minecraft"
 group = mod.group
@@ -17,9 +18,8 @@ base {
 
 repositories {
     maven("https://maven.neoforged.net/releases/")
-    maven("https://api.modrinth.com/maven")
 
-    // modmenu
+    // ModMenu
     maven("https://maven.terraformersmc.com/")
     maven("https://maven.nucleoid.xyz/")
 
@@ -27,57 +27,41 @@ repositories {
     maven("https://maven.midnightdust.eu/releases/")
 
     // Sodium
-    maven("https://maven.caffeinemc.net/releases")
+    strictMaven("https://maven.caffeinemc.net/releases", "Sodium", "net.caffeinemc")
 }
 dependencies {
-    minecraft("com.mojang:minecraft:$minecraft")
-
     // MidnightLib
-    val midnightlib = "eu.midnightdust:midnightlib:${mod.dep("midnightlib_version")}+${minecraft}-${loader}"
-    modImplementation(midnightlib)
-    include(midnightlib)
-
-    if (loader == "fabric") {
-        modImplementation("net.fabricmc:fabric-loader:${mod.dep("fabric_loader")}")
-        modImplementation("net.fabricmc.fabric-api:fabric-api:${mod.dep("fabric_version")}")
-
-        modCompileOnly("maven.modrinth:sodium:${mod.dep("sodium_version")}-fabric")
+    val midnightlib = if (mod.dep("midnightlib_version").contains("+")) "eu.midnightdust:midnightlib:${mod.dep("midnightlib_version")}"
+                      else "eu.midnightdust:midnightlib:${mod.dep("midnightlib_version")}+${minecraft}-${loader}"
+    implementation(midnightlib) {
+        exclude(group = "net.fabricmc.fabric-api")
+        exclude(group = "com.terraformersmc")
     }
-    if (loader == "forge") {
-        "forge"("net.minecraftforge:forge:${minecraft}-${mod.dep("forge_loader")}")
-
-        modCompileOnly("maven.modrinth:xenon-forge:0.3.31")
-    }
-    if (loader == "neoforge") {
-        "neoForge"("net.neoforged:neoforge:${mod.dep("neoforge_loader")}")
-
-        if (minecraft == "1.21.11")
-            modCompileOnly("net.caffeinemc:sodium-neoforge-mod:0.8.0+mc1.21.11")
-        else
-            modCompileOnly("maven.modrinth:sodium:${mod.dep("sodium_version")}-neoforge")
-    }
-    mappings (loom.officialMojangMappings())
+    compileOnly("net.caffeinemc:sodium-neoforge-mod:0.8.0+mc1.21.11")
 }
+neoForge {
+    version = mod.dep("neoforge_loader") as String
 
-loom {
-    //accessWidenerPath = rootProject.file("src/main/resources/template.accesswidener")
+    runs {
+        register("client") {
+            gameDirectory = file("../../run/")
+            client()
+        }
 
-    decompilers {
-        get("vineflower").apply { // Adds names to lambdas - useful for mixins
-            options.put("mark-corresponding-synthetics", "1")
+        register("server") {
+            gameDirectory = file("../../run/")
+            server()
         }
     }
-    if (loader == "forge") {
-        forge.mixinConfigs("cullleaves.mixins.json", "cullleaves-neoforge.mixins.json")
-    }
 }
+
 
 publishMods {
     val modrinthToken = System.getenv("MODRINTH_TOKEN")
     val curseforgeToken = System.getenv("CURSEFORGE_TOKEN")
     val githubToken = System.getenv("GITHUB_TOKEN").orEmpty()
 
-    file = project.tasks.remapJar.get().archiveFile
+    file = project.tasks.jar.get().archiveFile
     dryRun = modrinthToken == null || curseforgeToken == null
 
     displayName = "${mod.name} ${mod.version} - ${loader.replaceFirstChar { it.uppercase() }} ${property("mod.mc_title")}"
@@ -95,7 +79,6 @@ publishMods {
         projectId = property("publish.modrinth").toString()
         accessToken = modrinthToken
         targets.forEach(minecraftVersions::add)
-        requires("midnightlib")
         if (loader == "fabric") {
             requires("fabric-api")
         }
@@ -105,7 +88,6 @@ publishMods {
         projectId = property("publish.curseforge").toString()
         accessToken = curseforgeToken.toString()
         targets.forEach(minecraftVersions::add)
-        requires("midnightlib")
         if (loader == "fabric") {
             requires("fabric-api")
         }
@@ -113,7 +95,7 @@ publishMods {
 
 //    github {
 //        accessToken = githubToken
-//        repository = "TeamMidnightDust/CullLeaves"
+//        repository = "TeamMidnightDust/MidnightLib"
 //        commitish = "multiversion" // This is the branch the release tag will be created from
 //
 //        tagName = "v" + properties["mod.version"]
@@ -143,38 +125,27 @@ publishing {
     }
 }
 
+val requiredJava = when {
+    sc.current.parsed >= "26.1-pre-1" -> JavaVersion.VERSION_25
+    sc.current.parsed >= "1.20.5" -> JavaVersion.VERSION_21
+    sc.current.parsed >= "1.18" -> JavaVersion.VERSION_17
+    sc.current.parsed >= "1.17" -> JavaVersion.VERSION_16
+    else -> JavaVersion.VERSION_1_8
+}
 
 java {
     withSourcesJar()
-    val java = if (stonecutter.eval(minecraft, ">=1.20.5")) JavaVersion.VERSION_21 else JavaVersion.VERSION_17
-    targetCompatibility = java
-    sourceCompatibility = java
-}
-
-val shadowBundle: Configuration by configurations.creating {
-    isCanBeConsumed = false
-    isCanBeResolved = true
-}
-
-tasks.shadowJar {
-    configurations = listOf(shadowBundle)
-    archiveClassifier = "dev-shadow"
-}
-
-tasks.remapJar {
-    injectAccessWidener = true
-    input = tasks.shadowJar.get().archiveFile
-    archiveClassifier = null
-    dependsOn(tasks.shadowJar)
+    targetCompatibility = requiredJava
+    sourceCompatibility = requiredJava
 }
 
 tasks.jar {
-    archiveClassifier = "dev"
+    inputs.property("archivesName", base.archivesName)
 }
 
 val buildAndCollect = tasks.register<Copy>("buildAndCollect") {
     group = "build"
-    from(tasks.remapJar.get().archiveFile, tasks.remapSourcesJar.get().archiveFile)
+    from(tasks.jar.get().archiveFile)
     into(rootProject.layout.buildDirectory.file("libs/${mod.version}/$loader"))
     dependsOn("build")
 }
@@ -220,21 +191,35 @@ tasks.build {
     description = "Must run through 'chiseledBuild'"
 }
 
+tasks.processResources {
+    // Minify json resources
+    doLast {
+        fileTree(outputs.files.singleFile).matching {
+            include("**/*.json")
+        }.forEach { file ->
+            file.writeText(JsonOutput.toJson(JsonSlurper().parse(file)))
+        }
+    }
+}
+
+sourceSets {
+    test {
+        compileClasspath.plus(main.get().compileClasspath)
+        runtimeClasspath.plus(main.get().runtimeClasspath)
+        java {
+            srcDirs.add(File("src/test/java"))
+        }
+        resources {
+            srcDirs.add(File("src/test/resources"))
+        }
+    }
+}
+tasks.withType<AbstractTestTask>().configureEach {
+    failOnNoDiscoveredTests = false
+}
 
 stonecutter {
     constants {
         arrayOf("fabric", "neoforge", "forge").forEach { it -> put(it, loader == it) }
-    }
-    replacements.string {
-        direction = eval(current.version, ">=1.21.11")
-        replace("ResourceLocation", "Identifier")
-    }
-    replacements.string {
-        direction = eval(current.version, ">=1.21")
-        replace("new ResourceLocation", "ResourceLocation.fromNamespaceAndPath")
-    }
-    replacements.string {
-        direction = eval(current.version, ">=1.21")
-        replace("me.jellysquid.mods.sodium", "net.caffeinemc.mods.sodium")
     }
 }

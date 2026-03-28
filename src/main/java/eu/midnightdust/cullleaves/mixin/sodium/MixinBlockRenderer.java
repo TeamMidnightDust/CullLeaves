@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 //? if >= 1.21.4 {
-import net.minecraft.client.renderer.block.model.BlockStateModel;
+import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.core.BlockPos;
 //?} else if >= 1.21 {
@@ -21,7 +21,7 @@ import net.caffeinemc.mods.sodium.client.render.chunk.compile.pipeline.BlockRend
 *///?}
 
 //? if fabric && >= 1.21 {
-/*? if < 1.21.11 {*/ /*import net.caffeinemc.mods.sodium.client.render.frapi.render.AbstractBlockRenderContext*/ /*?} else {*/ import net.caffeinemc.mods.sodium.client.render.model.AbstractBlockRenderContext; /*?}*/;
+/*? if < 1.21.11 {*/ /*import net.caffeinemc.mods.sodium.client.render.frapi.render.AbstractBlockRenderContext *//*?} else {*/ import net.caffeinemc.mods.sodium.client.render.model.AbstractBlockRenderContext; /*?}*/;
 //?} else {
 /*import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Unique;

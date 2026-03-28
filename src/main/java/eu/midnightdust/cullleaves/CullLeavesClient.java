@@ -12,7 +12,7 @@ import net.minecraft.server.packs.PackType;
 
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
-import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.MangroveRootsBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,9 +23,13 @@ import java.io.IOException;
 
 //? fabric {
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
+//? if >= 1.21.11 {
+import net.fabricmc.fabric.api.resource.v1.pack.PackActivationType;
+//?} else {
+/*import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+*///?}
 //? if >= 1.21.9 {
 import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
 //?} else {
@@ -68,7 +72,7 @@ import net.minecraftforge.resource.PathPackResources;
 *///?}
 
 //? neoforge || forge
-/*@Mod(CullLeavesClient.MOD_ID)*/
+//@Mod(CullLeavesClient.MOD_ID)
 public class CullLeavesClient /*? fabric {*/ implements ModInitializer /*?}*/ {
     public static final String MOD_ID = "cullleaves";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
@@ -137,15 +141,20 @@ public class CullLeavesClient /*? fabric {*/ implements ModInitializer /*?}*/ {
     public void onInitialize() {
         MidnightConfig.init(CullLeavesClient.MOD_ID, CullLeavesConfig.class);
         FabricLoader.getInstance().getModContainer("cullleaves").ifPresent(modContainer -> {
-            ResourceManagerHelper.registerBuiltinResourcePack(Identifier.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "smartleaves"), modContainer, ResourcePackActivationType.NORMAL);
+            //? if >= 1.21.11 {
+            ResourceLoader.registerBuiltinPack(Identifier.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "smartleaves"), modContainer, PackActivationType.NORMAL);
+            //?} else {
+            //ResourceManagerHelper.registerBuiltinResourcePack(ResourceLocation.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "smartleaves"), modContainer, ResourcePackActivationType.NORMAL);
+            //?}
         });
         //? if >= 1.21.9 {
-        ResourceLoader.get(PackType.CLIENT_RESOURCES).registerReloader(Identifier.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "resourcepack_options"), CullLeavesClient.ReloadListener.INSTANCE);
+        //~ if >= 26.1 '.registerReloader' -> '.registerReloadListener'
+        ResourceLoader.get(PackType.CLIENT_RESOURCES).registerReloadListener(Identifier.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "resourcepack_options"), CullLeavesClient.ReloadListener.INSTANCE);
         //?} else {
         /*ResourceManagerHelper.get(PackType.CLIENT_RESOURCES).registerReloadListener(new SimpleSynchronousResourceReloadListener() {
             @Override
             public Identifier getFabricId() {
-                return Identifier.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "resourcepack_options");
+                return ResourceLocation.fromNamespaceAndPath(CullLeavesClient.MOD_ID, "resourcepack_options");
             }
             @Override
             public void onResourceManagerReload(ResourceManager manager) {
@@ -159,7 +168,7 @@ public class CullLeavesClient /*? fabric {*/ implements ModInitializer /*?}*/ {
         MidnightConfig.init(CullLeavesClient.MOD_ID, CullLeavesConfig.class);
     }
 
-    @EventBusSubscriber(modid = CullLeavesClient.MOD_ID, value = Dist.CLIENT/^? if <=1.21.5 {^//^, bus = EventBusSubscriber.Bus.MOD ^//^?}^/)
+    @EventBusSubscriber(modid = CullLeavesClient.MOD_ID, value = Dist.CLIENT/^? if <=1.21.5 {^/, bus = EventBusSubscriber.Bus.MOD /^?}^/)
     public static class CullLeavesClientEvents {
         @SubscribeEvent
         public static void addPackFinders(AddPackFindersEvent event) {
@@ -186,7 +195,7 @@ public class CullLeavesClient /*? fabric {*/ implements ModInitializer /*?}*/ {
         @SubscribeEvent
         public static void addPackFinders(AddPackFindersEvent event) {
             if (event.getPackType() == PackType.CLIENT_RESOURCES) {
-                registerResourcePack(event, Identifier.fromNamespaceAndPath(MOD_ID, "smartleaves"), false);
+                registerResourcePack(event, ResourceLocation.fromNamespaceAndPath(MOD_ID, "smartleaves"), false);
             }
         }
         private static void registerResourcePack(AddPackFindersEvent event, Identifier id, boolean alwaysEnabled) {
