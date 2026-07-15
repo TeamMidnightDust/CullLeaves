@@ -12,7 +12,8 @@ public class CullLeavesConfig extends MidnightConfig {
     @Override
     public void writeChanges() {
         var client = Minecraft.getInstance();
-        if (client != null && client.level != null) client.levelRenderer.needsUpdate();
+        //~ if >= 26.2 'levelRenderer.needsUpdate()' -> 'levelExtractor.allChanged()'
+        if (client != null && client.level != null) client.levelExtractor.allChanged();
         super.writeChanges();
     }
 }
