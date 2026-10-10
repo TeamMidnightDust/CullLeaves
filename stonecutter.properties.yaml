@@ -6,8 +6,8 @@ mod:
 
 # Project IDs for Modrinth & CurseForge
 publish:
-  modrinth: "3IuO68q1"
-  curseforge: "563977"
+  modrinth: "GNxdLCoP"
+  curseforge: "423254"
 
 deps:
   midnightlib: 1.9.3
